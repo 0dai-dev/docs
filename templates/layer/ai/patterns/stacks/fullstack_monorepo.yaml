@@ -1,0 +1,21 @@
+# managed: true
+
+name: fullstack_monorepo
+stack: fullstack-monorepo
+project_shape:
+  - apps/web
+  - services/api
+  - packages/ui
+  - packages/sdk
+  - infra
+  - tools
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - refactor_module
+  - write_tests
+  - release_flow

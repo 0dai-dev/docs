@@ -1,0 +1,38 @@
+managed: true
+name: repo-mode/polyrepo
+version: 1.0.0
+kind: repo-mode
+description: Template pack for poly-repo operating mode with clear service boundaries, independent deployment, and cross-repo contracts.
+
+detection:
+  indicators:
+    - single service in src/ or app/
+    - no workspaces field in package.json
+    - no apps/ or packages/ directories
+    - standalone pyproject.toml or go.mod at root
+
+guidance:
+  navigation: |
+    This is a single-service repository. All code relates to one deployable unit.
+    Dependencies on other services are via APIs, not shared code imports.
+    Changes are self-contained and can be deployed independently.
+
+  ci_strategy: |
+    Build, test, and deploy the full service on each change.
+    Use conventional versioning and changelogs.
+    Contract tests validate API boundaries with dependent services.
+
+  agent_hints:
+    - This repo owns one service — avoid importing code from external repos
+    - API contracts (OpenAPI, protobuf, GraphQL schemas) define service boundaries
+    - Changes can be deployed independently without coordinating with other repos
+    - Keep the dependency footprint minimal — this service should be self-contained
+
+structure:
+  expected_dirs:
+    - src/ or app/
+    - tests/
+    - docs/
+    - infra/
+  shared_config_root: false
+  workspace_manager: none

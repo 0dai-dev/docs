@@ -1,0 +1,10 @@
+{
+  "managed": true,
+  "servers": {
+    "local-files": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+    }
+  }
+}

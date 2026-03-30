@@ -1,0 +1,11 @@
+# managed: true
+
+name: flutter
+priority: 10
+match_primary:
+  - pubspec.yaml
+recommended_layout: project_layouts/flutter
+agents:
+  - codex
+  - claude
+  - opencode

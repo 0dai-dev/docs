@@ -1,0 +1,20 @@
+{
+  "managed": true,
+  "model": "claude-sonnet-4-6",
+  "effortLevel": "high",
+  "permissionMode": "limited",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./ai/bootstrap/hooks/session_start.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "disableAllHooks": false
+}

@@ -1,0 +1,42 @@
+managed: true
+name: repo-mode/monorepo
+version: 1.0.0
+kind: repo-mode
+description: Template pack for mono-repo operating mode with shared workspace, cross-package navigation, and unified CI.
+
+detection:
+  indicators:
+    - workspaces field in package.json
+    - apps/ and packages/ directories
+    - services/ and packages/ directories
+    - lerna.json
+    - pnpm-workspace.yaml
+    - nx.json
+    - turbo.json
+
+guidance:
+  navigation: |
+    This is a mono-repo. Multiple applications and services share one repository.
+    Use the workspace root as the coordination point. Shared code lives in packages/.
+    Changes may affect multiple apps — check cross-package imports before modifying shared code.
+
+  ci_strategy: |
+    Prefer incremental builds that only rebuild affected packages.
+    Use workspace-aware tools (turbo, nx, lerna) when available.
+    Test affected packages, not the entire repo, on each change.
+
+  agent_hints:
+    - Always check which workspace packages import a module before changing it
+    - Prefer editing shared packages over duplicating code across apps
+    - Run workspace-level lint and test commands, not per-package ones
+    - When adding dependencies, add to the correct workspace package, not the root
+
+structure:
+  expected_dirs:
+    - apps/
+    - services/
+    - packages/
+    - infra/
+    - tools/
+  shared_config_root: true
+  workspace_manager: auto-detect

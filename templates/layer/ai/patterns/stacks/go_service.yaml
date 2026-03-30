@@ -1,0 +1,20 @@
+# managed: true
+
+name: go_service
+stack: go-service
+project_shape:
+  - cmd/server
+  - internal
+  - pkg
+  - migrations
+  - infra
+  - tools
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - write_tests
+  - release_flow

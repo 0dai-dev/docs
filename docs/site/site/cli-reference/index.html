@@ -1,0 +1,1402 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Five agents. One config. Zero friction.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.0dai.dev/cli-reference/">
+      
+      
+        <link rel="prev" href="../migration/">
+      
+      
+        <link rel="next" href="../mcp-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>CLI Commands - 0dai Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="0dai Documentation" class="md-header__button md-logo" aria-label="0dai Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0dai Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI Commands
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="0dai Documentation" class="md-nav__button md-logo" aria-label="0dai Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    0dai Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-roaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Roaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Commands
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-existing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        init-existing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        doctor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        serve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#harvest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        harvest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        promote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mcp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        team
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#billing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        billing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Team Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enterprise-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enterprise Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-advanced-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal / Advanced Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdk-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-existing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        init-existing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        doctor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        validate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        serve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#harvest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        harvest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        promote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mcp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        team
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#billing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        billing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Team Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enterprise-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enterprise Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-advanced-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal / Advanced Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cli-reference">CLI Reference<a class="headerlink" href="#cli-reference" title="Permanent link">&para;</a></h1>
+<p>All commands are invoked as <code>0dai &lt;command&gt; [options]</code>.</p>
+<p>Run <code>0dai --help</code> for a top-level summary, or <code>0dai &lt;command&gt; --help</code> for command-specific options.</p>
+<hr />
+<h2 id="core-commands">Core Commands<a class="headerlink" href="#core-commands" title="Permanent link">&para;</a></h2>
+<p>These ten commands cover the daily workflow for any project using 0dai.</p>
+<h3 id="init-existing"><code>init-existing</code><a class="headerlink" href="#init-existing" title="Permanent link">&para;</a></h3>
+<p>Migrate an existing project to 0dai without overwriting your current config files.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>init-existing<span class="w"> </span>--target<span class="w"> </span>.
+</code></pre></div>
+<p>Reads your existing <code>CLAUDE.md</code>, <code>AGENTS.md</code>, and similar files, then sets up the <code>ai/</code> directory structure alongside them. Uses managed blocks to inject 0dai content while preserving your custom text.</p>
+<hr />
+<h3 id="sync"><code>sync</code><a class="headerlink" href="#sync" title="Permanent link">&para;</a></h3>
+<p>Regenerate agent config files from the current manifest state.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>sync
+</code></pre></div>
+<p>Run this after editing <code>ai/manifest.json</code>, adding bulletins, or changing personas. Updates <code>CLAUDE.md</code>, <code>AGENTS.md</code>, and any other registered agent files.</p>
+<hr />
+<h3 id="detect"><code>detect</code><a class="headerlink" href="#detect" title="Permanent link">&para;</a></h3>
+<p>Auto-detect the project's tech stack and update the manifest.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>detect
+</code></pre></div>
+<p>Scans the project for package files, config files, and directory structure to identify languages, frameworks, and tooling. Writes results to <code>ai/manifest.json</code>.</p>
+<hr />
+<h3 id="doctor"><code>doctor</code><a class="headerlink" href="#doctor" title="Permanent link">&para;</a></h3>
+<p>Check the health of the 0dai setup in the current project.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>doctor
+</code></pre></div>
+<p>Validates the manifest, checks agent file sync status, verifies stack detection, and reports any drift between the manifest and generated files. Use this after migrations or when something seems off.</p>
+<hr />
+<h3 id="validate"><code>validate</code><a class="headerlink" href="#validate" title="Permanent link">&para;</a></h3>
+<p>Validate the manifest and all AI config files against their schemas.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>validate
+</code></pre></div>
+<p>Useful in CI to catch malformed manifests before they reach developers.</p>
+<hr />
+<h3 id="serve"><code>serve</code><a class="headerlink" href="#serve" title="Permanent link">&para;</a></h3>
+<p>Start the local MCP (Model Context Protocol) server.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>serve
+<span class="c1"># or specify a port</span>
+0dai<span class="w"> </span>serve<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span>
+</code></pre></div>
+<p>Exposes all 0dai data as MCP tools that AI agents can call during a session. Required for agents to use <code>get_session</code>, <code>save_session</code>, and other dynamic tools.</p>
+<hr />
+<h3 id="harvest"><code>harvest</code><a class="headerlink" href="#harvest" title="Permanent link">&para;</a></h3>
+<p>Extract and store knowledge from the current codebase.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>harvest
+</code></pre></div>
+<p>Analyzes code, commit messages, and comments to build a searchable knowledge base in <code>ai/knowledge/</code>. Powers the <code>experience</code> MCP tool and <code>search</code> command.</p>
+<hr />
+<h3 id="promote"><code>promote</code><a class="headerlink" href="#promote" title="Permanent link">&para;</a></h3>
+<p>Promote a local manifest change to the team registry.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>promote<span class="w"> </span>--message<span class="w"> </span><span class="s2">&quot;Add payment service stack&quot;</span>
+</code></pre></div>
+<p>Requires auth. Pushes the current manifest state to the shared registry so other team members can pull it.</p>
+<hr />
+<h3 id="session"><code>session</code><a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
+<p>Manage Session Roaming state.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>session<span class="w"> </span>save<span class="w"> </span>--summary<span class="w"> </span><span class="s2">&quot;Description of where you are&quot;</span>
+0dai<span class="w"> </span>session<span class="w"> </span>status
+0dai<span class="w"> </span>session<span class="w"> </span><span class="nb">complete</span>
+0dai<span class="w"> </span>session<span class="w"> </span><span class="nb">history</span>
+</code></pre></div>
+<p>See <a href="../session-roaming/">Session Roaming</a> for full documentation.</p>
+<hr />
+<h3 id="mcp"><code>mcp</code><a class="headerlink" href="#mcp" title="Permanent link">&para;</a></h3>
+<p>Inspect and test MCP tool availability.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>mcp<span class="w"> </span>list
+0dai<span class="w"> </span>mcp<span class="w"> </span>call<span class="w"> </span>get_session
+0dai<span class="w"> </span>mcp<span class="w"> </span>call<span class="w"> </span>get_project_health
+</code></pre></div>
+<p><code>list</code> shows all available tools. <code>call</code> invokes a tool directly from the CLI for debugging.</p>
+<hr />
+<h2 id="account-commands">Account Commands<a class="headerlink" href="#account-commands" title="Permanent link">&para;</a></h2>
+<p>These commands require an active 0dai account. Run <code>0dai auth login</code> first.</p>
+<h3 id="auth"><code>auth</code><a class="headerlink" href="#auth" title="Permanent link">&para;</a></h3>
+<p>Log in, log out, and manage credentials.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>auth<span class="w"> </span>login
+0dai<span class="w"> </span>auth<span class="w"> </span><span class="nb">logout</span>
+0dai<span class="w"> </span>auth<span class="w"> </span>status
+0dai<span class="w"> </span>auth<span class="w"> </span>token
+</code></pre></div>
+<h3 id="team"><code>team</code><a class="headerlink" href="#team" title="Permanent link">&para;</a></h3>
+<p>Manage team membership and invitations.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>team<span class="w"> </span>list
+0dai<span class="w"> </span>team<span class="w"> </span>invite<span class="w"> </span>user@example.com
+0dai<span class="w"> </span>team<span class="w"> </span>remove<span class="w"> </span>user@example.com
+</code></pre></div>
+<h3 id="billing"><code>billing</code><a class="headerlink" href="#billing" title="Permanent link">&para;</a></h3>
+<p>View subscription status and usage.</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>billing<span class="w"> </span>status
+0dai<span class="w"> </span>billing<span class="w"> </span>usage
+</code></pre></div>
+<hr />
+<h2 id="additional-commands">Additional Commands<a class="headerlink" href="#additional-commands" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search</code></td>
+<td>Search the harvested knowledge base</td>
+</tr>
+<tr>
+<td><code>configure</code></td>
+<td>Set local or global CLI configuration</td>
+</tr>
+<tr>
+<td><code>scan</code></td>
+<td>Scan for secrets and sensitive data in tracked files</td>
+</tr>
+<tr>
+<td><code>spec</code></td>
+<td>Generate or update a project spec from the manifest</td>
+</tr>
+<tr>
+<td><code>plugin</code></td>
+<td>Install, list, and remove 0dai plugins</td>
+</tr>
+<tr>
+<td><code>webhook</code></td>
+<td>Configure webhooks for manifest change events</td>
+</tr>
+<tr>
+<td><code>maturity</code></td>
+<td>Score the project's AI-readiness maturity level</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="team-commands">Team Commands<a class="headerlink" href="#team-commands" title="Permanent link">&para;</a></h2>
+<p>These commands require auth and appropriate team permissions.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kb</code></td>
+<td>Manage the shared team knowledge base</td>
+</tr>
+<tr>
+<td><code>activity</code></td>
+<td>View team activity feed</td>
+</tr>
+<tr>
+<td><code>role-policy</code></td>
+<td>Define and enforce agent role policies</td>
+</tr>
+<tr>
+<td><code>conflicts</code></td>
+<td>Detect and resolve manifest conflicts across team members</td>
+</tr>
+<tr>
+<td><code>federation</code></td>
+<td>Configure cross-project or cross-org manifest federation</td>
+</tr>
+<tr>
+<td><code>approve</code></td>
+<td>Approve pending manifest changes in the review queue</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="enterprise-commands">Enterprise Commands<a class="headerlink" href="#enterprise-commands" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>policy-push</code></td>
+<td>Push compliance policies to all projects in the org</td>
+</tr>
+<tr>
+<td><code>compliance</code></td>
+<td>Generate and export compliance reports</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="internal-advanced-commands">Internal / Advanced Commands<a class="headerlink" href="#internal-advanced-commands" title="Permanent link">&para;</a></h2>
+<p>These commands are primarily used in automation, CI pipelines, or advanced debugging scenarios.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audit</code></td>
+<td>Query the immutable audit log</td>
+</tr>
+<tr>
+<td><code>doc-drift</code></td>
+<td>Detect documentation drift between manifest and actual code</td>
+</tr>
+<tr>
+<td><code>stack-test</code></td>
+<td>Test a custom stack definition against a target project</td>
+</tr>
+<tr>
+<td><code>changelog</code></td>
+<td>Generate a changelog from session history and decisions</td>
+</tr>
+<tr>
+<td><code>backstage-export</code></td>
+<td>Export manifest data to Backstage catalog format</td>
+</tr>
+<tr>
+<td><code>registry</code></td>
+<td>Interact with the manifest registry directly</td>
+</tr>
+<tr>
+<td><code>agent-teams</code></td>
+<td>Manage agent team definitions</td>
+</tr>
+<tr>
+<td><code>orchestrate</code></td>
+<td>Run a multi-agent orchestration plan</td>
+</tr>
+<tr>
+<td><code>score-experience</code></td>
+<td>Score the quality of harvested experience entries</td>
+</tr>
+<tr>
+<td><code>observability</code></td>
+<td>Query agent observability data</td>
+</tr>
+<tr>
+<td><code>prompt-history</code></td>
+<td>View prompt history for the current project</td>
+</tr>
+<tr>
+<td><code>wal</code></td>
+<td>Inspect the write-ahead log for manifest mutations</td>
+</tr>
+<tr>
+<td><code>report</code></td>
+<td>Generate a project health report</td>
+</tr>
+<tr>
+<td><code>pull-bulletins</code></td>
+<td>Pull the latest team bulletins from the registry</td>
+</tr>
+<tr>
+<td><code>apply-policy</code></td>
+<td>Apply a policy file to the current project</td>
+</tr>
+<tr>
+<td><code>task run</code></td>
+<td>Execute a named task defined in the manifest</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

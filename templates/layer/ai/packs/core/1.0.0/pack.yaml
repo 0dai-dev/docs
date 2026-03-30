@@ -1,0 +1,5 @@
+managed: true
+name: core
+version: 1.0.0
+kind: instructions
+description: Core ZeroDayAI repository operating rules

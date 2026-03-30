@@ -1,0 +1,21 @@
+# managed: true
+
+name: react_native
+stack: react-native
+project_shape:
+  - src/screens
+  - src/navigation
+  - src/components
+  - src/services
+  - src/hooks
+  - __tests__
+  - infra
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - write_tests
+  - release_flow

@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+usage() {
+  cat <<'EOF'
+0dai — Five agents. One config. Zero friction.
+
+Core commands:
+  init-existing --target <path>         Install ai/ layer into existing project
+  sync --target <path>                  Re-generate all agent configs from ai/
+  detect --target <path>                Show detected stack and available CLIs
+  doctor --target <path>                Explain environment and command policy
+  validate --target <path>              Check ai/ layer health
+  serve --target <path>                 Open web dashboard
+  harvest --target <path>               Capture experience events into candidates
+  promote --target <path>               Promote candidates to accepted knowledge
+  session --target <path> [save|status] Transfer context between agent CLIs
+  mcp --target <path>                   Run MCP server (43 tools)
+
+Account:
+  auth [login|signup|status|logout]     Cloud authentication
+  team [members|invite|remove|role]     Team management
+  billing [status|upgrade|api-keys]     Billing and API keys
+  site [--port 8430]                    Product landing page
+
+Run '0dai --help --all' for all 50 commands.
+EOF
+}
+
+usage_all() {
+  usage
+  cat <<'EOF'
+
+Additional commands:
+  init-new --stack <name> --target <path>
+  search --target <path> --query <text>
+  configure --target <path> --preset <minimal|standard|enterprise>
+  maturity --target <path> [--json]
+  scan --target <path> [--json|--fix]
+  spec --target <path> [--list|--new|--validate]
+  plugin --target <path> [list|init|run|validate]
+  webhook --target <path> [add|list|remove|test]
+
+Team (requires auth):
+  kb --target <path> [init|push|pull|status|search]
+  activity --target <path> [--limit|--filter|--json]
+  role-policy --target <path> [init|set|check|list]
+  conflicts --target <path> --branch <name>
+  federation --target <path> [--add|--sync|--remove]
+  approve --target <path> [list|approve|deny|check|request]
+
+Enterprise:
+  policy-push --policy-dir <dir> [init|add-repo|push|status]
+  compliance --target <path> [--framework soc2|iso27001]
+
+Internal:
+  audit, doc-drift, stack-test, changelog, backstage-export, registry,
+  agent-teams, orchestrate, score-experience, observability, prompt-history,
+  wal, report, pull-bulletins, apply-policy, task run
+EOF
+}
+
+command="${1:-}"
+shift || true
+
+case "$command" in
+  detect|init-existing|init-new|sync|validate|doctor|harvest|promote|apply-policy|report|pull-bulletins|configure|serve|search|federation|registry|maturity|agent-teams|spec|backstage-export|changelog|audit|doc-drift|stack-test|orchestrate|score-experience|observability|prompt-history|wal|kb|activity|role-policy|conflicts|policy-push|compliance|session|scan|approve|plugin|webhook)
+    exec "$ROOT_DIR/bin/0dai-repo" "$command" "$@"
+    ;;
+  auth)
+    exec python3 "$ROOT_DIR/scripts/auth.py" "$@"
+    ;;
+  team)
+    exec python3 "$ROOT_DIR/scripts/team_manager.py" "$@"
+    ;;
+  billing)
+    exec python3 "$ROOT_DIR/scripts/billing.py" "$@"
+    ;;
+  site)
+    exec python3 "$ROOT_DIR/scripts/landing.py" "$@"
+    ;;
+  policy-push)
+    exec python3 "$ROOT_DIR/scripts/policy_push.py" "$@"
+    ;;
+  mcp)
+    exec python3 "$ROOT_DIR/scripts/mcp_server.py" "$@"
+    ;;
+  task)
+    exec "$ROOT_DIR/bin/0dai-task" "$@"
+    ;;
+  ""|-h|--help|help)
+    if [ "${1:-}" = "--all" ] 2>/dev/null; then
+      usage_all
+    else
+      usage
+    fi
+    ;;
+  *)
+    echo "Unknown command: $command" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

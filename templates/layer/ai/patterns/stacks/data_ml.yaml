@@ -1,0 +1,23 @@
+# managed: true
+
+name: data_ml
+stack: data-ml
+project_shape:
+  - notebooks
+  - src/data
+  - src/features
+  - src/models
+  - src/pipelines
+  - data
+  - models
+  - configs
+  - infra
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - write_tests
+  - refactor_module

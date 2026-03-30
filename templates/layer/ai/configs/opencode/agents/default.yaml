@@ -1,0 +1,6 @@
+---
+managed: true
+name: default
+description: Shared OpenCode agent template
+instructions:
+  - Read ai/docs and ai/playbooks before coding.

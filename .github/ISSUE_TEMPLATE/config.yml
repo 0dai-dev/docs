@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Experience Flywheel Guide
+    url: https://github.com/0dai-dev/0dai/blob/main/docs/experience-flywheel.md
+    about: Read how ZeroDayAI collects and promotes AI experience before filing.

@@ -1,0 +1,21 @@
+{
+  "shared_agents_md": "templates/layer/ai/templates/shared/AGENTS.md.tmpl",
+  "claude_md": "templates/layer/ai/templates/shared/CLAUDE.md.tmpl",
+  "codex_config": "templates/layer/ai/templates/codex/config.toml.tmpl",
+  "claude_settings": "templates/layer/ai/templates/claude/settings.json.tmpl",
+  "opencode_config": "templates/layer/ai/templates/opencode/opencode.json.tmpl",
+  "shared_rules_dir": "templates/layer/ai/templates/shared/rules",
+  "codex_agents_dir": "templates/layer/ai/templates/codex/agents",
+  "claude_agents_dir": "templates/layer/ai/templates/claude/agents",
+  "claude_hooks_dir": "templates/layer/ai/templates/claude/hooks",
+  "opencode_agents_dir": "templates/layer/ai/templates/opencode/agents",
+  "gemini_config": "templates/layer/ai/templates/gemini/settings.json.tmpl",
+  "gemini_agents_dir": "templates/layer/ai/templates/gemini/agents",
+  "aider_config": "templates/layer/ai/templates/aider/aider.conf.yml.tmpl",
+  "aider_agents_dir": "templates/layer/ai/templates/aider/agents",
+  "skills_dir": "templates/layer/ai/skills-src",
+  "compatibility_root_dir": "templates/root",
+  "compat_gitignore": "templates/root/.gitignore",
+  "compat_mcp": "templates/root/.mcp.json",
+  "compat_ci_workflow": "templates/root/.github/workflows/ai-layer-check.yml"
+}

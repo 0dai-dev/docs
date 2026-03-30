@@ -1,0 +1,53 @@
+name: smoke
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate templates
+        run: python3 scripts/validate_templates.py
+      - name: Run universal repo smoke test
+        run: bash tests/smoke_test.sh
+      - name: Run roadmap guardian
+        run: python3 scripts/roadmap_guardian.py
+
+  experience-report:
+    needs: [smoke]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate experience report
+        run: python3 scripts/aggregate_experience.py
+      - name: Prepare knowledge intake summary
+        run: python3 scripts/prepare_knowledge_issue.py
+      - name: Score knowledge intake summary
+        run: python3 scripts/score_knowledge_intake.py
+      - name: Create knowledge intake issue
+        if: ${{ vars.ODAI_KNOWLEDGE_REPO != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ODAI_KNOWLEDGE_REPO: ${{ vars.ODAI_KNOWLEDGE_REPO }}
+        run: python3 scripts/create_knowledge_issue.py
+      - name: Upload experience artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 0dai-experience-report
+          path: |
+            ai/experience/reports/0dai-experience-report.json
+            ai/experience/reports/0dai-knowledge-intake.json
+            ai/experience/reports/0dai-knowledge-intake-scored.json

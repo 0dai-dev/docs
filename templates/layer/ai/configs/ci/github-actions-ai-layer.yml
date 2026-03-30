@@ -1,0 +1,16 @@
+# managed: true
+name: 0dai-layer-check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-0dai-layer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate AI layer presence
+        run: test -d ai && test -f ai/VERSION && test -f AGENTS.md

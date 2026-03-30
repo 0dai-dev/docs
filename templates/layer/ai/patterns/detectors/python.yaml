@@ -1,0 +1,12 @@
+# managed: true
+
+name: python
+priority: 90
+match_any:
+  - pyproject.toml
+  - requirements.txt
+recommended_layout: project_layouts/backend-api
+agents:
+  - codex
+  - claude
+  - opencode

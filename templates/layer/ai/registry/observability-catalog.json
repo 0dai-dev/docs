@@ -1,0 +1,100 @@
+{
+  "managed": true,
+  "schema": 1,
+  "description": "Agent observability and tracing configurations per stack",
+  "providers": {
+    "langfuse": {
+      "name": "Langfuse",
+      "description": "Open-source LLM observability — traces, evals, prompt management",
+      "docs": "https://langfuse.com/docs",
+      "env_vars": ["LANGFUSE_PUBLIC_KEY", "LANGFUSE_SECRET_KEY", "LANGFUSE_HOST"],
+      "supported_stacks": "all"
+    },
+    "opentelemetry": {
+      "name": "OpenTelemetry",
+      "description": "Vendor-neutral distributed tracing standard (CNCF)",
+      "docs": "https://opentelemetry.io/docs/",
+      "env_vars": ["OTEL_EXPORTER_OTLP_ENDPOINT", "OTEL_SERVICE_NAME", "OTEL_RESOURCE_ATTRIBUTES"],
+      "supported_stacks": "all"
+    },
+    "langsmith": {
+      "name": "LangSmith",
+      "description": "LangChain platform for tracing, evaluation, and monitoring",
+      "docs": "https://docs.smith.langchain.com/",
+      "env_vars": ["LANGCHAIN_API_KEY", "LANGCHAIN_TRACING_V2", "LANGCHAIN_PROJECT"],
+      "supported_stacks": ["python-service", "fastapi", "data-ml", "django"]
+    }
+  },
+  "stacks": {
+    "python-service": {
+      "recommended": ["langfuse", "opentelemetry"],
+      "packages": {
+        "langfuse": "langfuse",
+        "opentelemetry": "opentelemetry-sdk opentelemetry-exporter-otlp opentelemetry-instrumentation-fastapi",
+        "langsmith": "langsmith"
+      }
+    },
+    "fastapi": {
+      "recommended": ["langfuse", "opentelemetry"],
+      "packages": {
+        "langfuse": "langfuse",
+        "opentelemetry": "opentelemetry-sdk opentelemetry-exporter-otlp opentelemetry-instrumentation-fastapi",
+        "langsmith": "langsmith"
+      }
+    },
+    "data-ml": {
+      "recommended": ["langfuse", "langsmith"],
+      "packages": {
+        "langfuse": "langfuse",
+        "opentelemetry": "opentelemetry-sdk opentelemetry-exporter-otlp",
+        "langsmith": "langsmith"
+      }
+    },
+    "django": {
+      "recommended": ["langfuse", "opentelemetry"],
+      "packages": {
+        "langfuse": "langfuse",
+        "opentelemetry": "opentelemetry-sdk opentelemetry-exporter-otlp opentelemetry-instrumentation-django",
+        "langsmith": "langsmith"
+      }
+    },
+    "nextjs": {
+      "recommended": ["langfuse", "opentelemetry"],
+      "packages": {
+        "langfuse": "langfuse",
+        "opentelemetry": "@opentelemetry/sdk-node @opentelemetry/exporter-trace-otlp-http @opentelemetry/instrumentation-http"
+      }
+    },
+    "go-service": {
+      "recommended": ["opentelemetry"],
+      "packages": {
+        "opentelemetry": "go.opentelemetry.io/otel go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+      }
+    },
+    "backend-api": {
+      "recommended": ["opentelemetry"],
+      "packages": {
+        "opentelemetry": "(depends on language)"
+      }
+    },
+    "flutter": {
+      "recommended": ["opentelemetry"],
+      "packages": {
+        "opentelemetry": "opentelemetry_dart"
+      }
+    },
+    "react-native": {
+      "recommended": ["opentelemetry"],
+      "packages": {
+        "opentelemetry": "@opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-http"
+      }
+    },
+    "fullstack-monorepo": {
+      "recommended": ["langfuse", "opentelemetry"],
+      "packages": {
+        "langfuse": "langfuse (backend), langfuse (frontend)",
+        "opentelemetry": "@opentelemetry/sdk-node (backend), opentelemetry-sdk (if Python)"
+      }
+    }
+  }
+}

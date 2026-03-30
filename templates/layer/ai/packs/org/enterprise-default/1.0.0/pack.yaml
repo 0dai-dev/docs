@@ -1,0 +1,46 @@
+managed: true
+name: org/enterprise-default
+version: 1.0.0
+kind: org-policy
+description: Enterprise default policy pack with security-hardened permissions, MCP restrictions, and hook enforcement.
+
+permissions:
+  protected_paths:
+    - .env*
+    - .git/**
+    - terraform.tfstate*
+    - secrets/**
+    - credentials/**
+  denied_commands:
+    - "rm -rf /"
+    - "curl * | bash"
+    - "wget * | sh"
+  command_tier_overrides:
+    deploy:
+      tier: ops
+      require_approval: true
+    migrate:
+      tier: ops
+      require_approval: true
+
+mcp:
+  allowed_servers:
+    - filesystem
+    - github
+  denied_servers:
+    - shell-exec
+    - arbitrary-code
+  require_explicit_approval: true
+
+hooks:
+  pre_deploy:
+    command: "echo '[org-policy] deploy requires manual approval'"
+    tier: ops
+  post_init:
+    command: "echo '[org-policy] org policy pack applied'"
+
+constraints:
+  max_file_size_kb: 5120
+  require_tests_before_deploy: true
+  require_review_before_merge: true
+  audit_log_enabled: true

@@ -1,0 +1,6 @@
+{
+  "managed": true,
+  "model": "claude-sonnet-4-6",
+  "permissionMode": "limited",
+  "disableAllHooks": false
+}

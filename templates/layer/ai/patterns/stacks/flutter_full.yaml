@@ -1,0 +1,18 @@
+# managed: true
+
+name: flutter_full
+stack: flutter
+project_shape:
+  - app
+  - packages
+  - infra
+  - tools
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - refactor_module
+  - write_tests

@@ -1,0 +1,5 @@
+managed: true
+name: tool/claude
+version: 1.0.0
+kind: tool-pack
+description: Claude Code-specific instructions and generation policy

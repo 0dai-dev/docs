@@ -1,0 +1,38 @@
+{
+  "managed": true,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZeroDayAI Experience Event",
+  "type": "object",
+  "required": [
+    "schema",
+    "event_type",
+    "repo",
+    "tool",
+    "task_type",
+    "summary"
+  ],
+  "properties": {
+    "schema": { "type": "integer", "const": 1 },
+    "event_type": { "type": "string" },
+    "repo": { "type": "string" },
+    "service": { "type": "string" },
+    "tool": { "type": "string", "enum": ["codex", "claude", "opencode", "mixed"] },
+    "task_type": { "type": "string", "enum": ["bugfix", "feature", "refactor", "migration", "review"] },
+    "paths": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "files_touched": { "type": "integer", "minimum": 0 },
+    "ci_passed": { "type": "boolean" },
+    "review_outcome": { "type": "string", "enum": ["approved", "changes_requested", "commented", "none"] },
+    "human_takeover": { "type": "boolean" },
+    "reverted_within_7d": { "type": "boolean" },
+    "rule_hits": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "candidate_type": { "type": "string", "enum": ["rule", "skill", "playbook", "anti-pattern", "none"] },
+    "summary": { "type": "string" }
+  },
+  "additionalProperties": true
+}

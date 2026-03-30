@@ -1,0 +1,36 @@
+site_name: 0dai Documentation
+site_description: "Five agents. One config. Zero friction."
+site_url: https://docs.0dai.dev
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: teal
+    accent: teal
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - search.highlight
+
+nav:
+  - Getting Started: index.md
+  - Guides:
+    - Session Roaming: session-roaming.md
+    - Migration from CLAUDE.md: migration.md
+  - Reference:
+    - CLI Commands: cli-reference.md
+    - MCP Tools: mcp-reference.md
+    - Python SDK: sdk-reference.md
+  - Architecture: architecture.md
+  - FAQ: faq.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true

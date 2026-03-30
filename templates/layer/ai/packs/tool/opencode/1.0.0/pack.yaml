@@ -1,0 +1,5 @@
+managed: true
+name: tool/opencode
+version: 1.0.0
+kind: tool-pack
+description: OpenCode-specific instructions and generation policy

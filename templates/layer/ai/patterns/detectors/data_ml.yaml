@@ -1,0 +1,16 @@
+# managed: true
+
+name: data-ml
+priority: 15
+match_primary:
+  - notebooks/
+  - src/pipelines/
+  - src/models/
+match_any:
+  - data/raw/
+  - configs/
+recommended_layout: project_layouts/data-ml
+agents:
+  - codex
+  - claude
+  - opencode

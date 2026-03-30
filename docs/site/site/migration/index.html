@@ -1,0 +1,942 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Five agents. One config. Zero friction.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.0dai.dev/migration/">
+      
+      
+        <link rel="prev" href="../session-roaming/">
+      
+      
+        <link rel="next" href="../cli-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Migration from CLAUDE.md - 0dai Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#migrating-from-manual-claudemd-agentsmd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="0dai Documentation" class="md-header__button md-logo" aria-label="0dai Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0dai Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migration from CLAUDE.md
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="0dai Documentation" class="md-nav__button md-logo" aria-label="0dai Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    0dai Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-roaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Roaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-the-manual-maintenance-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before: The Manual Maintenance Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-backup-your-existing-config-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Backup Your Existing Config Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-run-0dai-init-existing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Run 0dai init-existing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-what-0dai-generates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: What 0dai Generates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-how-your-existing-claudemd-is-preserved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: How Your Existing CLAUDE.md Is Preserved
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-commit-and-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Commit and Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdk-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-the-manual-maintenance-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before: The Manual Maintenance Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-backup-your-existing-config-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Backup Your Existing Config Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-run-0dai-init-existing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Run 0dai init-existing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-what-0dai-generates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: What 0dai Generates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-how-your-existing-claudemd-is-preserved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: How Your Existing CLAUDE.md Is Preserved
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-commit-and-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Commit and Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="migrating-from-manual-claudemd-agentsmd">Migrating from Manual CLAUDE.md / AGENTS.md<a class="headerlink" href="#migrating-from-manual-claudemd-agentsmd" title="Permanent link">&para;</a></h1>
+<p>If you're already maintaining <code>CLAUDE.md</code>, <code>AGENTS.md</code>, or similar config files by hand, this guide shows you how to adopt 0dai without losing any of your existing content.</p>
+<h2 id="before-the-manual-maintenance-problem">Before: The Manual Maintenance Problem<a class="headerlink" href="#before-the-manual-maintenance-problem" title="Permanent link">&para;</a></h2>
+<p>Without 0dai, teams maintain a separate configuration file for each AI agent CLI they use:</p>
+<ul>
+<li><code>CLAUDE.md</code> — instructions for Claude Code</li>
+<li><code>AGENTS.md</code> — instructions for Codex</li>
+<li><code>GEMINI.md</code> — instructions for Gemini CLI</li>
+<li>(and more as new agents arrive)</li>
+</ul>
+<p>These files drift out of sync. A decision captured in <code>CLAUDE.md</code> never makes it to <code>AGENTS.md</code>. Onboarding instructions get updated in one file but not the others. Over time, each agent gets a subtly different picture of your project.</p>
+<p>0dai solves this by managing a single source of truth and rendering agent-specific files from it — while preserving everything you've already written.</p>
+<hr />
+<h2 id="step-1-backup-your-existing-config-files">Step 1: Backup Your Existing Config Files<a class="headerlink" href="#step-1-backup-your-existing-config-files" title="Permanent link">&para;</a></h2>
+<p>Before running any 0dai commands, make copies of your existing files:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>CLAUDE.md<span class="w"> </span>CLAUDE.md.bak
+cp<span class="w"> </span>AGENTS.md<span class="w"> </span>AGENTS.md.bak
+</code></pre></div>
+<p>This is a precaution. 0dai will not delete your content, but it's good practice before any migration.</p>
+<hr />
+<h2 id="step-2-run-0dai-init-existing">Step 2: Run <code>0dai init-existing</code><a class="headerlink" href="#step-2-run-0dai-init-existing" title="Permanent link">&para;</a></h2>
+<p>Point 0dai at your project root:</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>init-existing<span class="w"> </span>--target<span class="w"> </span>.
+</code></pre></div>
+<p>This command inspects your project, reads your existing config files, and sets up the 0dai directory structure alongside what you already have.</p>
+<p>If your project has a non-standard layout, pass the explicit path:</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>init-existing<span class="w"> </span>--target<span class="w"> </span>/path/to/your/project
+</code></pre></div>
+<hr />
+<h2 id="step-3-what-0dai-generates">Step 3: What 0dai Generates<a class="headerlink" href="#step-3-what-0dai-generates" title="Permanent link">&para;</a></h2>
+<p>After <code>init-existing</code> runs, you'll find the following new files and directories:</p>
+<div class="highlight"><pre><span></span><code>ai/
+  manifest.json          # Project identity, stack, team settings
+  sessions/
+    active.json          # Session Roaming state (see session-roaming.md)
+    history/             # Archived completed sessions
+  knowledge/             # Harvested experience and decisions
+  bulletins/             # Team-shared updates and announcements
+  personas/              # Agent persona overrides
+  stacks/                # Custom stack definitions
+.0dai/
+  config.json            # Local CLI configuration
+</code></pre></div>
+<p>Your existing <code>CLAUDE.md</code> and <code>AGENTS.md</code> files are left in place.</p>
+<hr />
+<h2 id="step-4-how-your-existing-claudemd-is-preserved">Step 4: How Your Existing CLAUDE.md Is Preserved<a class="headerlink" href="#step-4-how-your-existing-claudemd-is-preserved" title="Permanent link">&para;</a></h2>
+<p>0dai uses <strong>managed blocks</strong> to inject its generated content into your existing files. A managed block looks like this:</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- 0dai:managed:start --&gt;
+...generated content...
+&lt;!-- 0dai:managed:end --&gt;
+</code></pre></div>
+<p>Everything outside a managed block is yours and will never be touched. 0dai only updates content within its own blocks on each <code>sync</code>.</p>
+<p>If 0dai cannot locate a suitable place to insert a managed block (for example, if your file has an unusual structure), it writes its output to a <code>.generated</code> fallback file instead:</p>
+<ul>
+<li><code>CLAUDE.md</code> stays untouched</li>
+<li><code>CLAUDE.generated.md</code> receives 0dai's additions</li>
+</ul>
+<p>You can then manually merge the two, or reference <code>.generated.md</code> in your own file.</p>
+<hr />
+<h2 id="step-5-commit-and-verify">Step 5: Commit and Verify<a class="headerlink" href="#step-5-commit-and-verify" title="Permanent link">&para;</a></h2>
+<p>Add the new <code>ai/</code> and <code>.0dai/</code> directories to version control:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>ai/<span class="w"> </span>.0dai/<span class="w"> </span>CLAUDE.md<span class="w"> </span>AGENTS.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;migrate to 0dai&quot;</span>
+</code></pre></div>
+<p>Then run the doctor to confirm everything is wired up correctly:</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>doctor
+</code></pre></div>
+<p>The doctor checks:</p>
+<ul>
+<li>Manifest validity</li>
+<li>Agent file sync status</li>
+<li>Session state consistency</li>
+<li>MCP server reachability (if configured)</li>
+<li>Known stack detection</li>
+</ul>
+<p>A healthy output looks like:</p>
+<div class="highlight"><pre><span></span><code>[ok] manifest valid
+[ok] CLAUDE.md synced
+[ok] AGENTS.md synced
+[ok] stack detected: Node.js / TypeScript
+[ok] no drift detected
+</code></pre></div>
+<p>Fix any warnings before treating the migration as complete.</p>
+<hr />
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<p><strong>Will my custom CLAUDE.md be overwritten?</strong></p>
+<p>No. Managed blocks preserve your content. 0dai only writes within <code>&lt;!-- 0dai:managed:start --&gt;</code> and <code>&lt;!-- 0dai:managed:end --&gt;</code> delimiters. Everything you've written outside those delimiters is untouched on every <code>sync</code>.</p>
+<p><strong>What if I don't have an AGENTS.md yet?</strong></p>
+<p>0dai will create one, populated with the content it generates from your manifest. You can then add your own content outside the managed blocks.</p>
+<p><strong>Can I go back to managing files manually?</strong></p>
+<p>Yes. Run <code>0dai sync --eject</code> to remove all managed blocks and leave plain Markdown files that you can maintain by hand. Your content is preserved; only 0dai's injected sections are removed.</p>
+<p><strong>Does 0dai commit anything automatically?</strong></p>
+<p>No. 0dai never runs <code>git commit</code> on your behalf. All file changes are staged for you to review and commit yourself.</p>
+<p><strong>What if my project uses a monorepo?</strong></p>
+<p>Run <code>init-existing</code> once per package that has its own AI agent context. Each subdirectory gets its own <code>ai/</code> directory and manifest. A root-level manifest can declare the workspace structure.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

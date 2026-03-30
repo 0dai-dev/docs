@@ -1,0 +1,22 @@
+# managed: true
+name: 0dai-layer-check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate managed AI layer files
+        run: |
+          test -d ai
+          test -f ai/VERSION
+          test -f AGENTS.md
+          test -f .codex/config.toml || true
+          test -f .claude/settings.json || true
+          test -f opencode.json || true

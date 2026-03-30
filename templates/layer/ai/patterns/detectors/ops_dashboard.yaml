@@ -1,0 +1,16 @@
+# managed: true
+
+name: ops-dashboard
+priority: 30
+match_primary:
+  - dashboard/
+match_any:
+  - docker/
+  - www/
+  - main.go
+  - monitor.py
+recommended_layout: project_layouts/backend-api
+agents:
+  - codex
+  - claude
+  - opencode

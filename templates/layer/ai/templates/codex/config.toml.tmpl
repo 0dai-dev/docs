@@ -1,0 +1,15 @@
+# managed: true
+model = "gpt-5.4"
+model_provider = "openai"
+approval_policy = "untrusted"
+sandbox_mode = "workspace-write"
+project_doc_max_bytes = 65536
+project_root_markers = [".git", ".codex", ".claude", ".opencode"]
+project_doc_fallback_filenames = ["AGENTS.md", "TEAM_GUIDE.md", ".agents.md"]
+
+[shell_environment_policy]
+inherit = ["PATH", "HOME", "SHELL", "TERM"]
+exclude = ["AWS_*", "AZURE_*", "GCP_*", "OPENAI_API_KEY", "ANTHROPIC_API_KEY"]
+
+[context]
+paths = ["ai", "docs"]

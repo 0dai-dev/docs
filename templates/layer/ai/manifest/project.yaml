@@ -1,0 +1,22 @@
+managed: true
+project:
+  type: generic
+  monorepo: false
+  package_manager: unknown
+
+commands:
+  install: ""
+  build: ""
+  test: ""
+  lint: ""
+  format: ""
+
+ai:
+  tools:
+    codex: true
+    claude: true
+    opencode: true
+  plans_dir: ai/plans
+  protected_paths:
+    - .env*
+    - .git/**

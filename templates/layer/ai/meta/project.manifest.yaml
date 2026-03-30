@@ -1,0 +1,13 @@
+# managed: true
+
+installed_from: ZeroDayAI
+stack: generic
+managed_paths:
+  - ai
+  - AGENTS.md
+  - CLAUDE.md
+  - .codex/config.toml
+  - .claude/settings.json
+  - .mcp.json
+  - opencode.json
+  - .opencode/agents/default.yaml

@@ -1,0 +1,24 @@
+# managed: true
+# 0dai-generated Aider configuration
+# https://aider.chat/docs/config/aider_conf.html
+
+# Model selection (override with AIDER_MODEL env var)
+# model: anthropic/claude-sonnet-4-6
+
+# Read project context from ai/ layer
+read:
+  - ai/docs/README.ai.md
+  - ai/manifest/project.yaml
+  - AGENTS.md
+
+# Auto-commit settings
+auto-commits: true
+dirty-commits: false
+
+# Git integration
+git: true
+gitignore: true
+
+# Lint and test commands from ai/manifest/commands.yaml
+# lint-cmd: (set per project)
+# test-cmd: (set per project)

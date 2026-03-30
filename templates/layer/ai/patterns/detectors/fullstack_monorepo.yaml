@@ -1,0 +1,12 @@
+# managed: true
+
+name: fullstack-monorepo
+priority: 10
+match_primary:
+  - apps/web/
+  - services/api/
+recommended_layout: project_layouts/fullstack-monorepo
+agents:
+  - codex
+  - claude
+  - opencode

@@ -1,0 +1,20 @@
+name: AI Lesson
+description: Submit a reviewed lesson that may become a rule, playbook, skill, or anti-pattern
+title: "ai lesson: "
+labels:
+  - ai
+  - lesson
+body:
+  - type: dropdown
+    id: promote_to
+    attributes:
+      label: Promote To
+      options: [rule, skill, playbook, anti-pattern]
+  - type: textarea
+    id: lesson
+    attributes:
+      label: Lesson
+  - type: textarea
+    id: sources
+    attributes:
+      label: Evidence and source events

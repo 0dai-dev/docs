@@ -1,0 +1,19 @@
+# managed: true
+
+name: nextjs_app
+stack: nextjs
+project_shape:
+  - apps/web
+  - packages/ui
+  - packages/config
+  - infra
+  - tools
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - refactor_module
+  - write_tests

@@ -1,0 +1,19 @@
+name: AI Rule Candidate
+description: Propose a durable rule or guardrail based on repeated evidence
+title: "ai rule: "
+labels:
+  - ai
+  - rule
+body:
+  - type: textarea
+    id: rule
+    attributes:
+      label: Proposed rule
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this should be enforced
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and affected tools

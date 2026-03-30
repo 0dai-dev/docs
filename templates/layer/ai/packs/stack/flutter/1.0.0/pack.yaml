@@ -1,0 +1,5 @@
+managed: true
+name: stack/flutter
+version: 1.0.0
+kind: stack-pack
+description: Flutter stack defaults for ZeroDayAI

@@ -1,0 +1,79 @@
+{
+  "managed": true,
+  "schema": 1,
+  "updated": "2026-03-28",
+  "stacks": [
+    {
+      "name": "django",
+      "description": "Django web framework with manage.py, apps/, and migrations/",
+      "match_primary": ["manage.py", "settings.py"],
+      "match_any": ["requirements.txt", "pyproject.toml"],
+      "priority": 15,
+      "recommended_layout": "backend-api",
+      "tags": ["python", "web", "backend"]
+    },
+    {
+      "name": "rails",
+      "description": "Ruby on Rails with Gemfile, app/controllers/, and db/migrate/",
+      "match_primary": ["Gemfile", "config/routes.rb"],
+      "match_any": ["app/controllers/", "db/migrate/"],
+      "priority": 15,
+      "recommended_layout": "backend-api",
+      "tags": ["ruby", "web", "backend"]
+    },
+    {
+      "name": "spring-boot",
+      "description": "Spring Boot Java/Kotlin service with pom.xml or build.gradle",
+      "match_primary": ["src/main/java/", "src/main/kotlin/"],
+      "match_any": ["pom.xml", "build.gradle", "build.gradle.kts"],
+      "priority": 15,
+      "recommended_layout": "backend-api",
+      "tags": ["java", "kotlin", "backend"]
+    },
+    {
+      "name": "rust-service",
+      "description": "Rust service with Cargo.toml and src/main.rs",
+      "match_primary": ["Cargo.toml"],
+      "match_any": ["src/main.rs", "src/lib.rs"],
+      "priority": 10,
+      "recommended_layout": "backend-api",
+      "tags": ["rust", "backend"]
+    },
+    {
+      "name": "svelte-kit",
+      "description": "SvelteKit app with svelte.config.js and src/routes/",
+      "match_primary": ["svelte.config.js", "svelte.config.ts"],
+      "match_any": ["package.json", "src/routes/"],
+      "priority": 10,
+      "recommended_layout": "nextjs",
+      "tags": ["javascript", "web", "frontend"]
+    },
+    {
+      "name": "nuxt",
+      "description": "Nuxt.js app with nuxt.config.ts and pages/",
+      "match_primary": ["nuxt.config.ts", "nuxt.config.js"],
+      "match_any": ["package.json", "pages/"],
+      "priority": 10,
+      "recommended_layout": "nextjs",
+      "tags": ["javascript", "vue", "web", "frontend"]
+    },
+    {
+      "name": "terraform",
+      "description": "Terraform infrastructure project with .tf files",
+      "match_primary": ["main.tf", "variables.tf"],
+      "match_any": ["terraform.tfvars", "modules/"],
+      "priority": 10,
+      "recommended_layout": "backend-api",
+      "tags": ["infrastructure", "iac", "devops"]
+    },
+    {
+      "name": "kubernetes",
+      "description": "Kubernetes manifests with helm charts or kustomize",
+      "match_primary": ["Chart.yaml", "kustomization.yaml"],
+      "match_any": ["templates/", "base/", "overlays/"],
+      "priority": 10,
+      "recommended_layout": "backend-api",
+      "tags": ["infrastructure", "kubernetes", "devops"]
+    }
+  ]
+}

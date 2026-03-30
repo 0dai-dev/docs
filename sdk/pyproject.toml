@@ -1,0 +1,38 @@
+[project]
+name = "zerodayai"
+version = "0.3.6"
+description = "Python SDK for the 0dai AI operating layer — read manifests, detect stacks, query experience, and manage specs"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+authors = [
+    {name = "0dai-dev", email = "dev@0dai.dev"},
+]
+keywords = ["ai", "agents", "claude", "codex", "developer-tools", "mcp", "scaffold"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Build Tools",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/0dai-dev/0dai"
+Repository = "https://github.com/0dai-dev/0dai"
+Documentation = "https://github.com/0dai-dev/0dai#readme"
+"Bug Tracker" = "https://github.com/0dai-dev/0dai/issues"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["zerodayai*"]

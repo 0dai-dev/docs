@@ -1,0 +1,1047 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Five agents. One config. Zero friction.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.0dai.dev/mcp-reference/">
+      
+      
+        <link rel="prev" href="../cli-reference/">
+      
+      
+        <link rel="next" href="../sdk-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>MCP Tools - 0dai Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mcp-tools-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="0dai Documentation" class="md-header__button md-logo" aria-label="0dai Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0dai Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MCP Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="0dai Documentation" class="md-nav__button md-logo" aria-label="0dai Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    0dai Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-roaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Roaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#read-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-an-agent-to-the-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connecting an Agent to the MCP Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdk-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#read-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-an-agent-to-the-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connecting an Agent to the MCP Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mcp-tools-reference">MCP Tools Reference<a class="headerlink" href="#mcp-tools-reference" title="Permanent link">&para;</a></h1>
+<p>0dai exposes its data and capabilities via a <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server. Start the server with <code>0dai serve</code>, then configure your AI agent to connect to it.</p>
+<p>Tools are grouped by whether they read data, write data, or perform system operations.</p>
+<hr />
+<h2 id="read-tools">Read Tools<a class="headerlink" href="#read-tools" title="Permanent link">&para;</a></h2>
+<p>These tools return data without modifying state. Agents should call them at session start to load context.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_project_manifest</code></td>
+<td>Returns the full contents of <code>ai/manifest.json</code>, including project identity, stack, and team settings.</td>
+</tr>
+<tr>
+<td><code>get_codebase_map</code></td>
+<td>Returns a structural map of the codebase: directories, key files, and their relationships.</td>
+</tr>
+<tr>
+<td><code>get_commands</code></td>
+<td>Returns all commands defined in the manifest (build, test, lint, deploy, etc.) so agents know how to run the project.</td>
+</tr>
+<tr>
+<td><code>get_discovery</code></td>
+<td>Returns the auto-detected stack and tooling summary for the current project.</td>
+</tr>
+<tr>
+<td><code>get_project_health</code></td>
+<td>Returns a health score and list of issues for the current project based on manifest completeness and sync state.</td>
+</tr>
+<tr>
+<td><code>get_ai_version</code></td>
+<td>Returns the current 0dai CLI version and server protocol version.</td>
+</tr>
+<tr>
+<td><code>get_personas</code></td>
+<td>Returns all configured agent personas, including role definitions and behavioral overrides.</td>
+</tr>
+<tr>
+<td><code>get_bulletins</code></td>
+<td>Returns all active team bulletins — time-sensitive announcements that agents should surface to users.</td>
+</tr>
+<tr>
+<td><code>get_custom_stacks</code></td>
+<td>Returns any custom stack definitions registered in the project or org.</td>
+</tr>
+<tr>
+<td><code>get_applied_lock</code></td>
+<td>Returns the current applied lock state, indicating whether the manifest is locked against mutations.</td>
+</tr>
+<tr>
+<td><code>get_environment</code></td>
+<td>Returns environment context: detected CI system, OS, shell, and relevant environment variables.</td>
+</tr>
+<tr>
+<td><code>get_telemetry_summary</code></td>
+<td>Returns an aggregated summary of agent usage telemetry for the current project.</td>
+</tr>
+<tr>
+<td><code>get_registry</code></td>
+<td>Returns the current manifest registry state, including remote manifest versions and sync status.</td>
+</tr>
+<tr>
+<td><code>get_maturity_score</code></td>
+<td>Returns the project's AI-readiness maturity score across multiple dimensions (documentation, testing, security, etc.).</td>
+</tr>
+<tr>
+<td><code>search_experience</code></td>
+<td>Searches the harvested knowledge base for entries relevant to a given query string.</td>
+</tr>
+<tr>
+<td><code>get_federation</code></td>
+<td>Returns the federation configuration, showing how this project's manifest relates to other projects in the org.</td>
+</tr>
+<tr>
+<td><code>get_audit_log</code></td>
+<td>Returns recent entries from the immutable audit log for the current project.</td>
+</tr>
+<tr>
+<td><code>get_agent_teams</code></td>
+<td>Returns all agent team definitions installed in the project, including member roles and responsibilities.</td>
+</tr>
+<tr>
+<td><code>get_orchestration</code></td>
+<td>Returns the current orchestration plan if a multi-agent task is in progress.</td>
+</tr>
+<tr>
+<td><code>get_observability</code></td>
+<td>Returns observability data for recent agent sessions: latency, token usage, and error rates.</td>
+</tr>
+<tr>
+<td><code>get_prompt_history</code></td>
+<td>Returns recent prompt history for the current project, grouped by agent and session.</td>
+</tr>
+<tr>
+<td><code>get_wal</code></td>
+<td>Returns recent entries from the write-ahead log, showing pending and applied manifest mutations.</td>
+</tr>
+<tr>
+<td><code>get_activity_feed</code></td>
+<td>Returns the team activity feed: recent syncs, promotions, approvals, and session completions.</td>
+</tr>
+<tr>
+<td><code>get_role_policy</code></td>
+<td>Returns the role policy definitions that govern what each agent role is permitted to do.</td>
+</tr>
+<tr>
+<td><code>check_conflicts</code></td>
+<td>Checks for manifest conflicts between the local state and the remote registry.</td>
+</tr>
+<tr>
+<td><code>get_knowledge_base</code></td>
+<td>Returns the full contents of the team knowledge base, including decisions and shared context.</td>
+</tr>
+<tr>
+<td><code>get_compliance_report</code></td>
+<td>Returns the most recent compliance report for the current project.</td>
+</tr>
+<tr>
+<td><code>get_plugins</code></td>
+<td>Returns all installed 0dai plugins and their registered capabilities.</td>
+</tr>
+<tr>
+<td><code>scan_secrets</code></td>
+<td>Scans tracked files for sensitive data patterns (API keys, tokens, credentials) and returns any findings.</td>
+</tr>
+<tr>
+<td><code>check_approval</code></td>
+<td>Checks whether a pending manifest change has been approved by required reviewers.</td>
+</tr>
+<tr>
+<td><code>list_projects</code></td>
+<td>Returns a list of all projects registered under the current team or org.</td>
+</tr>
+<tr>
+<td><code>get_project_health_multi</code></td>
+<td>Returns health scores for multiple projects in a single call — useful for dashboard views.</td>
+</tr>
+<tr>
+<td><code>get_session</code></td>
+<td>Returns the current active session from <code>ai/sessions/active.json</code>, including goal, plan, files touched, and handoff notes.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="write-tools">Write Tools<a class="headerlink" href="#write-tools" title="Permanent link">&para;</a></h2>
+<p>These tools modify state. Agents should use them to record progress and decisions during a session.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create_spec</code></td>
+<td>Creates or updates a project spec entry in the manifest based on provided requirements or descriptions.</td>
+</tr>
+<tr>
+<td><code>record_experience</code></td>
+<td>Stores a new experience entry (a pattern, solution, or lesson learned) in the project knowledge base.</td>
+</tr>
+<tr>
+<td><code>update_decision</code></td>
+<td>Records or updates an architectural decision, including rationale and alternatives considered.</td>
+</tr>
+<tr>
+<td><code>save_session</code></td>
+<td>Writes the current session state to <code>ai/sessions/active.json</code>, enabling handoff to another agent.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="system-tools">System Tools<a class="headerlink" href="#system-tools" title="Permanent link">&para;</a></h2>
+<p>These tools perform operations that affect agent behavior or candidate evaluation.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>score_candidates</code></td>
+<td>Evaluates a set of candidate approaches against the project's manifest constraints and returns a ranked score.</td>
+</tr>
+<tr>
+<td><code>undo_mutation</code></td>
+<td>Rolls back the most recent manifest mutation using the write-ahead log, restoring the previous state.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="connecting-an-agent-to-the-mcp-server">Connecting an Agent to the MCP Server<a class="headerlink" href="#connecting-an-agent-to-the-mcp-server" title="Permanent link">&para;</a></h2>
+<p>Start the server:</p>
+<div class="highlight"><pre><span></span><code>0dai<span class="w"> </span>serve
+</code></pre></div>
+<p>The server listens on <code>http://localhost:3000</code> by default. Configure your agent to use it:</p>
+<p><strong>Claude Code (<code>CLAUDE.md</code>):</strong></p>
+<div class="highlight"><pre><span></span><code>MCP server: http://localhost:3000
+</code></pre></div>
+<p><strong>Codex (<code>AGENTS.md</code>):</strong></p>
+<div class="highlight"><pre><span></span><code>tools:
+  mcp_server: http://localhost:3000
+</code></pre></div>
+<p>Once connected, agents can call any tool listed above during a session. The <code>get_project_manifest</code>, <code>get_commands</code>, and <code>get_session</code> tools are typically called automatically at session start via the SessionStart hook.</p>
+<hr />
+<h2 id="error-codes">Error Codes<a class="headerlink" href="#error-codes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NOT_FOUND</code></td>
+<td>The requested resource does not exist (e.g., no active session).</td>
+</tr>
+<tr>
+<td><code>LOCKED</code></td>
+<td>The manifest is locked and the requested write operation is not permitted.</td>
+</tr>
+<tr>
+<td><code>AUTH_REQUIRED</code></td>
+<td>The tool requires an authenticated session. Run <code>0dai auth login</code>.</td>
+</tr>
+<tr>
+<td><code>SCHEMA_ERROR</code></td>
+<td>The input to a write tool failed schema validation.</td>
+</tr>
+<tr>
+<td><code>CONFLICT</code></td>
+<td>The write operation conflicts with a concurrent change. Use <code>undo_mutation</code> or <code>check_conflicts</code> to resolve.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# managed: true
+
+name: node
+priority: 90
+match_any:
+  - package.json
+recommended_layout: project_layouts/backend-api
+agents:
+  - codex
+  - claude
+  - opencode

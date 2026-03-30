@@ -1,0 +1,1 @@
+{"id":"exp-2026-03-25-001","task":"example task","tool":"claude","scope":["services/api"],"result":"success","patterns":["smallest-relevant-test-first"],"validated_by":"ci+human-review"}

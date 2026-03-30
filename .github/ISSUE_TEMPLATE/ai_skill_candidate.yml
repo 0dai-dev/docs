@@ -1,0 +1,19 @@
+name: AI Skill Candidate
+description: Propose a reusable workflow that should become a versioned skill
+title: "ai skill: "
+labels:
+  - ai
+  - skill
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Skill name
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow or recipe
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope by stack, paths, or tools

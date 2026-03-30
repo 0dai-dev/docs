@@ -1,0 +1,12 @@
+# Sample user-level Codex config for container runtime.
+# Project-level overrides should live in /workspace/.codex/config.toml.
+
+project_root_markers = [".git"]
+project_doc_fallback_filenames = ["TEAM_GUIDE.md", ".agents.md"]
+project_doc_max_bytes = 65536
+approval_policy = "untrusted"
+sandbox_mode = "workspace-write"
+
+[shell_environment_policy]
+inherit = "core"
+exclude = ["AWS_*", "AZURE_*", "GOOGLE_*", "*_TOKEN", "*_SECRET"]

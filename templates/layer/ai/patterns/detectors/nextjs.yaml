@@ -1,0 +1,15 @@
+# managed: true
+
+name: nextjs
+priority: 10
+match_primary:
+  - next.config.js
+  - next.config.mjs
+  - next.config.ts
+match_any:
+  - package.json
+recommended_layout: project_layouts/nextjs
+agents:
+  - codex
+  - claude
+  - opencode

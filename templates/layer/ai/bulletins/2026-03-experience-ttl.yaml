@@ -1,0 +1,19 @@
+managed: true
+id: 2026-03-experience-ttl
+severity: info
+published: 2026-03-28
+expires: 2026-09-28
+applies_to:
+  stacks: all
+  versions: ">=0.2.0"
+title: Experience TTL Now Configurable
+body: |
+  Experience candidates now expire based on ODAI_EXPERIENCE_TTL_DAYS
+  environment variable (default: 180 days). Previously this was hardcoded.
+
+  Set a shorter TTL for fast-moving projects:
+    export ODAI_EXPERIENCE_TTL_DAYS=90
+
+  Set a longer TTL for stable projects:
+    export ODAI_EXPERIENCE_TTL_DAYS=365
+action: none

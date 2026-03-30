@@ -1,0 +1,7 @@
+managed: true
+name: reviewer
+purpose: review architecture, safety, and drift from canonical ZeroDayAI project intent
+targets:
+  - codex
+  - claude
+  - opencode

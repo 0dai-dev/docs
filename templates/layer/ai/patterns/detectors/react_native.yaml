@@ -1,0 +1,16 @@
+# managed: true
+
+name: react-native
+priority: 10
+match_primary:
+  - app.json
+  - metro.config.js
+match_any:
+  - android/
+  - ios/
+  - package.json
+recommended_layout: project_layouts/react-native
+agents:
+  - codex
+  - claude
+  - opencode

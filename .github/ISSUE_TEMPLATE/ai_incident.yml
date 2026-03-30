@@ -1,0 +1,29 @@
+name: AI Incident
+description: Report an AI task that caused an incident, dangerous change, or rollback risk
+title: "ai incident: "
+labels:
+  - ai
+  - incident
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool
+      options: [codex, claude, opencode, mixed]
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: Task Type
+      options: [bugfix, feature, refactor, migration, review]
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and recovery

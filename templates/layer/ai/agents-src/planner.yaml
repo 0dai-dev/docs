@@ -1,0 +1,6 @@
+managed: true
+name: planner
+purpose: derive implementation plans from `ai/manifest/project.yaml`
+targets:
+  - claude
+  - opencode

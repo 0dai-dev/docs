@@ -1,0 +1,9 @@
+managed: true
+name: stable
+schema: 1
+packs:
+  core: 1.0.0
+  tool/codex: 1.0.0
+  tool/claude: 1.0.0
+  tool/opencode: 1.0.0
+  stack/flutter: 1.0.0

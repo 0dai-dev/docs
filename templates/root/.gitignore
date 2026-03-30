@@ -1,0 +1,13 @@
+# managed: true
+.DS_Store
+.env
+.env.*
+.claude/settings.local.json
+.opencode/sessions/
+.codex/logs/
+node_modules/
+dist/
+build/
+.dart_tool/
+.pytest_cache/
+coverage/

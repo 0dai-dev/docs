@@ -1,0 +1,22 @@
+# managed: true
+
+name: fastapi
+stack: fastapi
+project_shape:
+  - app/api/routes
+  - app/core
+  - app/models
+  - app/schemas
+  - app/services
+  - tests
+  - migrations
+  - infra
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - write_tests
+  - release_flow

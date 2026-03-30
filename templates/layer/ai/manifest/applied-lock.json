@@ -1,0 +1,18 @@
+{
+  "managed": true,
+  "schema": 1,
+  "channel": "stable",
+  "packs": {
+    "core": "1.0.0",
+    "tool/codex": "1.0.0",
+    "tool/claude": "1.0.0",
+    "tool/opencode": "1.0.0"
+  },
+  "generated": {
+    "AGENTS.md": "sha256:pending",
+    ".codex/config.toml": "sha256:pending",
+    ".claude/settings.json": "sha256:pending",
+    ".claude/CLAUDE.md": "sha256:pending",
+    "opencode.json": "sha256:pending"
+  }
+}

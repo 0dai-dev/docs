@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  0dai-repo detect --target <path>
+  0dai-repo init-existing --target <path>
+  0dai-repo init-new --stack <name> --agents <list> --target <path>
+  0dai-repo sync --target <path>
+  0dai-repo validate --target <path>
+  0dai-repo doctor --target <path>
+  0dai-repo harvest --target <path>
+  0dai-repo promote --target <path>
+  0dai-repo apply-policy --target <path> [--pack <name>]
+EOF
+}
+
+command="${1:-}"
+shift || true
+
+case "$command" in
+  detect) exec "$ROOT_DIR/bootstrap/detect_env.sh" "$@" ;;
+  init-existing) exec "$ROOT_DIR/bootstrap/init_existing.sh" "$@" ;;
+  init-new) exec "$ROOT_DIR/bootstrap/init_new.sh" "$@" ;;
+  sync) exec "$ROOT_DIR/bootstrap/sync_configs.sh" "$@" ;;
+  validate) exec "$ROOT_DIR/bootstrap/validate_target.sh" "$@" ;;
+  doctor) exec "$ROOT_DIR/bootstrap/doctor_target.sh" "$@" ;;
+  harvest) exec "$ROOT_DIR/bootstrap/harvest_experience.sh" "$@" ;;
+  promote) exec "$ROOT_DIR/bootstrap/promote_experience.sh" "$@" ;;
+  apply-policy) exec "$ROOT_DIR/bootstrap/apply_org_pack.sh" "$@" ;;
+  report) exec python3 "$ROOT_DIR/scripts/generate_telemetry.py" "$@" ;;
+  pull-bulletins) exec "$ROOT_DIR/bootstrap/sync_bulletins.sh" "$@" ;;
+  configure) exec python3 "$ROOT_DIR/scripts/configure.py" "$@" ;;
+  serve) exec python3 "$ROOT_DIR/scripts/serve.py" "$@" ;;
+  search) exec python3 "$ROOT_DIR/scripts/search_experience.py" "$@" ;;
+  federation) exec python3 "$ROOT_DIR/scripts/federation.py" "$@" ;;
+  registry) exec python3 "$ROOT_DIR/scripts/registry.py" "$@" ;;
+  maturity) exec python3 "$ROOT_DIR/scripts/maturity_score.py" "$@" ;;
+  agent-teams) exec python3 "$ROOT_DIR/scripts/generate_agent_teams.py" "$@" ;;
+  spec) exec python3 "$ROOT_DIR/scripts/manage_specs.py" "$@" ;;
+  backstage-export) exec python3 "$ROOT_DIR/scripts/export_backstage.py" "$@" ;;
+  changelog) exec python3 "$ROOT_DIR/scripts/generate_changelog.py" "$@" ;;
+  audit) exec python3 "$ROOT_DIR/scripts/release_auditor.py" "$@" ;;
+  doc-drift) exec python3 "$ROOT_DIR/scripts/detect_doc_drift.py" "$@" ;;
+  stack-test) exec python3 "$ROOT_DIR/scripts/test_stack_compat.py" "$@" ;;
+  orchestrate) exec python3 "$ROOT_DIR/scripts/generate_orchestration.py" "$@" ;;
+  score-experience) exec python3 "$ROOT_DIR/scripts/score_experience.py" "$@" ;;
+  observability) exec python3 "$ROOT_DIR/scripts/generate_observability.py" "$@" ;;
+  prompt-history) exec python3 "$ROOT_DIR/scripts/prompt_versioning.py" "$@" ;;
+  wal) exec python3 "$ROOT_DIR/scripts/wal.py" "$@" ;;
+  kb) exec python3 "$ROOT_DIR/scripts/knowledge_base.py" "$@" ;;
+  activity) exec python3 "$ROOT_DIR/scripts/activity_feed.py" "$@" ;;
+  role-policy) exec python3 "$ROOT_DIR/scripts/role_policy.py" "$@" ;;
+  conflicts) exec python3 "$ROOT_DIR/scripts/conflict_resolver.py" "$@" ;;
+  policy-push) exec python3 "$ROOT_DIR/scripts/policy_push.py" "$@" ;;
+  compliance) exec python3 "$ROOT_DIR/scripts/compliance_report.py" "$@" ;;
+  session) exec python3 "$ROOT_DIR/scripts/session_manager.py" "$@" ;;
+  scan) exec python3 "$ROOT_DIR/scripts/scan_secrets.py" "$@" ;;
+  approve) exec python3 "$ROOT_DIR/scripts/approval_workflow.py" "$@" ;;
+  plugin) exec python3 "$ROOT_DIR/scripts/plugin_manager.py" "$@" ;;
+  webhook) exec python3 "$ROOT_DIR/scripts/webhooks.py" "$@" ;;
+  ""|-h|--help|help) usage ;;
+  *) echo "Unknown command: $command" >&2; usage >&2; exit 1 ;;
+esac

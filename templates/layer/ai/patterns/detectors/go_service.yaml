@@ -1,0 +1,14 @@
+# managed: true
+
+name: go-service
+priority: 10
+match_primary:
+  - go.mod
+match_any:
+  - cmd/
+  - main.go
+recommended_layout: project_layouts/go-service
+agents:
+  - codex
+  - claude
+  - opencode

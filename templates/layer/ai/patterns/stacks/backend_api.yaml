@@ -1,0 +1,18 @@
+# managed: true
+
+name: backend_api
+stack: backend-api
+project_shape:
+  - services/api
+  - packages
+  - infra
+  - tools
+agents:
+  default:
+    - codex
+    - claude
+    - opencode
+workflows:
+  - add_feature
+  - write_tests
+  - release_flow

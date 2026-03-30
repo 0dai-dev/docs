@@ -1,0 +1,24 @@
+name: AI Regression
+description: Report a repeated failure, reverted change, or quality regression from AI-assisted work
+title: "ai regression: "
+labels:
+  - ai
+  - regression
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+  - type: input
+    id: pattern
+    attributes:
+      label: Repeated pattern
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Outcome
+      options: [reverted, failed ci, changes requested, manual takeover]
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and examples

@@ -1,0 +1,14 @@
+# managed: true
+
+name: python-service
+priority: 20
+match_primary:
+  - services/api/src/
+match_any:
+  - pyproject.toml
+  - requirements.txt
+recommended_layout: project_layouts/python-service
+agents:
+  - codex
+  - claude
+  - opencode

@@ -1,0 +1,103 @@
+services:
+  ai-runner:
+    build:
+      context: .
+      dockerfile: docker/ai-runner/Dockerfile
+    working_dir: /workspace
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /state/home
+      CODEX_HOME: /state/home/.codex
+      XDG_CONFIG_HOME: /state/home/.config
+      WORKSPACE_DIR: /workspace
+      ODAI_TRUST_MODE: ${ODAI_TRUST_MODE:-trusted}
+      ODAI_BOOTSTRAP_MODE: ${ODAI_BOOTSTRAP_MODE:-auto}
+      ODAI_CHECK_TOOLS: ${ODAI_CHECK_TOOLS:-1}
+    volumes:
+      - .:/workspace
+      - ai-home:/state/home
+      - ai-cache:/state/cache
+      - ai-logs:/state/logs
+      - ./run/secrets:/run/secrets:ro
+    tmpfs:
+      - /tmp
+    networks:
+      - ai-internal
+
+  ai-runner-isolated:
+    build:
+      context: .
+      dockerfile: docker/ai-runner/Dockerfile
+    working_dir: /workspace
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /state/home
+      CODEX_HOME: /state/home/.codex
+      XDG_CONFIG_HOME: /state/home/.config
+      WORKSPACE_DIR: /workspace
+      ODAI_TRUST_MODE: ${ODAI_TRUST_MODE:-untrusted}
+      ODAI_BOOTSTRAP_MODE: ${ODAI_BOOTSTRAP_MODE:-none}
+      ODAI_CHECK_TOOLS: ${ODAI_CHECK_TOOLS:-1}
+    volumes:
+      - .:/workspace
+      - ai-home:/state/home
+      - ai-cache:/state/cache
+      - ai-logs:/state/logs
+      - ./run/secrets:/run/secrets:ro
+    tmpfs:
+      - /tmp
+    network_mode: "none"
+    profiles:
+      - isolated
+
+  knowledge-uploader:
+    build:
+      context: .
+      dockerfile: docker/knowledge-uploader/Dockerfile
+    working_dir: /workspace
+    environment:
+      HOME: /state/home
+      ODAI_KNOWLEDGE_REPO: ${ODAI_KNOWLEDGE_REPO:-}
+    volumes:
+      - .:/workspace:ro
+      - ai-logs:/state/logs
+    command: ["bash", "-lc", "python3 scripts/prepare_knowledge_issue.py && python3 scripts/score_knowledge_intake.py && python3 scripts/create_knowledge_issue.py --dry-run"]
+    profiles: ["telemetry"]
+    networks:
+      - ai-internal
+
+  opencode-web:
+    build:
+      context: .
+      dockerfile: docker/ai-runner/Dockerfile
+    working_dir: /workspace
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /state/home
+      CODEX_HOME: /state/home/.codex
+      XDG_CONFIG_HOME: /state/home/.config
+      WORKSPACE_DIR: /workspace
+      ODAI_TRUST_MODE: ${ODAI_TRUST_MODE:-trusted}
+      ODAI_BOOTSTRAP_MODE: none
+      ODAI_CHECK_TOOLS: 0
+      OPENCODE_SERVER_PASSWORD: ${OPENCODE_SERVER_PASSWORD:-}
+    volumes:
+      - .:/workspace
+      - ai-home:/state/home
+      - ai-cache:/state/cache
+      - ai-logs:/state/logs
+    command: ["bash", "-lc", "test -n \"$OPENCODE_SERVER_PASSWORD\" || { echo 'Set OPENCODE_SERVER_PASSWORD'; exit 1; }; exec opencode web --hostname 0.0.0.0 --port 4096"]
+    ports:
+      - "4096:4096"
+    profiles:
+      - web
+    networks:
+      - ai-internal
+
+volumes:
+  ai-home:
+  ai-cache:
+  ai-logs:
+
+networks:
+  ai-internal:

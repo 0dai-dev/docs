@@ -1,0 +1,15 @@
+# managed: true
+
+name: fastapi
+priority: 15
+match_primary:
+  - app/main.py
+  - app/api/
+match_any:
+  - pyproject.toml
+  - requirements.txt
+recommended_layout: project_layouts/fastapi
+agents:
+  - codex
+  - claude
+  - opencode

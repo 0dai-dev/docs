@@ -1,0 +1,20 @@
+managed: true
+id: 2026-03-mcp-security
+severity: warning
+published: 2026-03-28
+expires: 2026-09-28
+applies_to:
+  stacks: all
+  versions: ">=0.2.0"
+title: MCP Server Security Advisory
+body: |
+  66% of audited MCP servers have vulnerabilities (March 2026).
+  43% of vulnerabilities are command injection.
+
+  Recommended actions:
+  - Start MCP servers with read-only tools, add write later.
+  - Validate all inputs received from LLM — models can hallucinate arguments.
+  - Never expose secrets, credentials, or API keys through tool responses.
+  - Prefer official MCP servers over community ones.
+  - Review ai/manifest/org-policy.json for MCP server allowlist.
+action: review

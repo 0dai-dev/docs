@@ -1,0 +1,57 @@
+# managed: true
+# role: roadmap-guardian
+# trigger: on-demand, pre-release, post-merge
+
+name: roadmap-guardian
+description: >
+  Постоянный субагент, отвечающий за контроль roadmap и консистентность реализации.
+  Запускается перед каждым релизом и после мержа крупных фич.
+
+responsibilities:
+  - Сверять docs/roadmap.md с фактическим состоянием кодовой базы
+  - Проверять что все пункты "Now" реализованы или в процессе
+  - Проверять что пункты "Next" не реализованы без обновления roadmap
+  - Контролировать версионную консистентность (VERSION, CHANGELOG, release-notes/)
+  - Проверять что README.md, architecture.md, bootstrap-spec.md актуальны
+  - Выявлять расхождения между детекторами, лейаутами и layout_for_stack()
+  - Генерировать отчёт о состоянии проекта
+
+checks:
+  version_consistency:
+    - VERSION файл совпадает с последней записью в CHANGELOG.md
+    - release-notes/v{version}.md существует для текущей версии
+    - CHANGELOG содержит запись для текущей версии
+
+  roadmap_alignment:
+    - Все стеки из project_layouts/ отражены в README.md "Included Stacks"
+    - Все детекторы из patterns/detectors/ есть в validate_templates.py expected_detectors
+    - Все лейауты из project_layouts/ есть в validate_templates.py validate_layouts()
+    - layout_for_stack() покрывает все именованные стеки
+
+  documentation_sync:
+    - README.md дерево отражает актуальную структуру bin/ и bootstrap/
+    - bootstrap-spec.md содержит все скрипты из bootstrap/
+    - architecture.md описывает текущую структуру проекта
+
+  ci_health:
+    - smoke.yml корректно зависит от всех необходимых job-ов
+    - validate_templates.py проходит без ошибок
+    - smoke_test.sh покрывает все стеки
+
+output_format: |
+  ## Roadmap Guardian Report
+
+  ### Version: {version}
+  ### Date: {date}
+
+  #### Consistency Checks
+  - [ ] Version files in sync
+  - [ ] Roadmap reflects implementation state
+  - [ ] Docs match codebase
+  - [ ] CI covers all stacks
+
+  #### Findings
+  {findings}
+
+  #### Recommendations
+  {recommendations}

@@ -1,0 +1,83 @@
+{
+  "managed": true,
+  "schema": 1,
+  "description": "Stack-specific MCP server recommendations. During init/sync, 0dai merges these into .mcp.json based on detected stack.",
+  "common": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-server-filesystem", "."],
+      "description": "Local filesystem access"
+    }
+  },
+  "stacks": {
+    "node": {
+      "servers": {}
+    },
+    "nextjs": {
+      "servers": {}
+    },
+    "react-native": {
+      "servers": {}
+    },
+    "python": {
+      "servers": {
+        "python-repl": {
+          "command": "npx",
+          "args": ["-y", "@anthropic-ai/mcp-server-python"],
+          "description": "Python REPL and execution"
+        }
+      }
+    },
+    "python-service": {
+      "servers": {
+        "python-repl": {
+          "command": "npx",
+          "args": ["-y", "@anthropic-ai/mcp-server-python"],
+          "description": "Python REPL and execution"
+        }
+      }
+    },
+    "fastapi": {
+      "servers": {
+        "python-repl": {
+          "command": "npx",
+          "args": ["-y", "@anthropic-ai/mcp-server-python"],
+          "description": "Python REPL and execution"
+        }
+      }
+    },
+    "data-ml": {
+      "servers": {
+        "python-repl": {
+          "command": "npx",
+          "args": ["-y", "@anthropic-ai/mcp-server-python"],
+          "description": "Python REPL and execution"
+        }
+      }
+    },
+    "go-service": {
+      "servers": {}
+    },
+    "flutter": {
+      "servers": {}
+    },
+    "fullstack-monorepo": {
+      "servers": {}
+    },
+    "django": {
+      "servers": {
+        "python-repl": {
+          "command": "npx",
+          "args": ["-y", "@anthropic-ai/mcp-server-python"],
+          "description": "Python REPL and execution"
+        }
+      }
+    },
+    "terraform": {
+      "servers": {}
+    },
+    "kubernetes": {
+      "servers": {}
+    }
+  }
+}

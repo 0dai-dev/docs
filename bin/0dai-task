@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  0dai-task run --target <path> --tool <name> --task-type <type> --summary <text> [options] -- <command>
+EOF
+}
+
+command="${1:-}"
+shift || true
+
+if [ "$command" != "run" ]; then
+  usage >&2
+  exit 1
+fi
+
+TARGET_DIR=""
+TOOL_NAME=""
+TASK_TYPE=""
+SUMMARY=""
+CANDIDATE_TYPE="none"
+PATHS_CSV="**/*"
+SERVICE_NAME=""
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --target) TARGET_DIR="$2"; shift 2 ;;
+    --tool) TOOL_NAME="$2"; shift 2 ;;
+    --task-type) TASK_TYPE="$2"; shift 2 ;;
+    --summary) SUMMARY="$2"; shift 2 ;;
+    --candidate-type) CANDIDATE_TYPE="$2"; shift 2 ;;
+    --paths) PATHS_CSV="$2"; shift 2 ;;
+    --service) SERVICE_NAME="$2"; shift 2 ;;
+    --) shift; break ;;
+    *) echo "Unknown argument: $1" >&2; usage >&2; exit 1 ;;
+  esac
+done
+
+[ -n "$TARGET_DIR" ] || { echo "missing --target" >&2; exit 1; }
+[ -d "$TARGET_DIR" ] || { echo "target does not exist: $TARGET_DIR" >&2; exit 1; }
+[ -n "$TOOL_NAME" ] || { echo "missing --tool" >&2; exit 1; }
+[ -n "$TASK_TYPE" ] || { echo "missing --task-type" >&2; exit 1; }
+[ -n "$SUMMARY" ] || { echo "missing --summary" >&2; exit 1; }
+[ "$#" -gt 0 ] || { echo "missing command after --" >&2; exit 1; }
+
+OUTBOX_DIR="$TARGET_DIR/ai/experience/outbox"
+mkdir -p "$OUTBOX_DIR"
+
+COMMAND=("$@")
+set +e
+"${COMMAND[@]}"
+exit_code=$?
+set -e
+
+python3 - "$TARGET_DIR" "$OUTBOX_DIR" "$TOOL_NAME" "$TASK_TYPE" "$SUMMARY" "$CANDIDATE_TYPE" "$PATHS_CSV" "$SERVICE_NAME" "$exit_code" <<'PY'
+import datetime as dt
+import json
+import pathlib
+import sys
+import uuid
+
+target = pathlib.Path(sys.argv[1])
+outbox = pathlib.Path(sys.argv[2])
+tool = sys.argv[3]
+task_type = sys.argv[4]
+summary = sys.argv[5]
+candidate_type = sys.argv[6]
+paths_csv = sys.argv[7]
+service = sys.argv[8]
+exit_code = int(sys.argv[9])
+
+now = dt.datetime.now(dt.UTC)
+event_id = f"exp-{now.strftime('%Y%m%d%H%M%S')}-{uuid.uuid4().hex[:8]}"
+payload = {
+    "schema": 1,
+    "event_type": "task_completed",
+    "id": event_id,
+    "repo": target.name,
+    "service": service,
+    "tool": tool,
+    "task_type": task_type,
+    "paths": [item for item in paths_csv.split(",") if item],
+    "files_touched": 0,
+    "ci_passed": exit_code == 0,
+    "review_outcome": "none",
+    "human_takeover": False,
+    "reverted_within_7d": False,
+    "rule_hits": [],
+    "candidate_type": candidate_type,
+    "summary": summary,
+    "exit_code": exit_code,
+    "recorded_at": now.isoformat().replace("+00:00", "Z"),
+}
+outbox.mkdir(parents=True, exist_ok=True)
+(outbox / f"{event_id}.json").write_text(json.dumps(payload) + "\n", encoding="utf-8")
+print(f"[0dai-task] wrote event {event_id}")
+PY
+
+exit "$exit_code"

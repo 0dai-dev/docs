@@ -1,0 +1,5 @@
+managed: true
+name: tool/codex
+version: 1.0.0
+kind: tool-pack
+description: Codex-specific instructions and generation policy
