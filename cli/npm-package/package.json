@@ -1,0 +1,46 @@
+{
+  "name": "@0dai-dev/cli",
+  "version": "4.1.0",
+  "description": "One config layer for seven AI coding agents — Claude Code, Codex, OpenCode, Gemini, Aider, Qoder",
+  "bin": {
+    "0dai": "./bin/0dai.js"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "claude",
+    "codex",
+    "gemini",
+    "aider",
+    "opencode",
+    "qoder",
+    "developer-tools",
+    "mcp",
+    "cli"
+  ],
+  "author": "0dai-dev <dev@0dai.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0dai-dev/0dai"
+  },
+  "homepage": "https://0dai.dev",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js || true"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "scripts/",
+    "README.md"
+  ],
+  "dependencies": {
+    "@clack/prompts": "^1.2.0"
+  },
+  "optionalDependencies": {
+    "node-pty": "^1.0.0"
+  }
+}

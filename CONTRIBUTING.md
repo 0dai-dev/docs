@@ -1,16 +1,31 @@
 # Contributing to 0dai
 
-Thanks for your interest! Here's how to help:
+Thank you for your interest in contributing!
 
-## Bug Reports
-File an issue with reproduction steps and `0dai doctor` output.
+## Quick Start
 
-## Feature Requests
-Open an issue describing the problem and proposed solution.
+```bash
+npm install -g @0dai-dev/cli
+cd your-project
+0dai init
+```
 
-## Code
-The CLI source is published on npm as `@0dai-dev/cli`.
-For now, contributions are accepted via issues and discussions.
+## Reporting Issues
 
-## Questions
-Visit https://0dai.dev/docs or open a discussion.
+- Open an issue on GitHub
+- Include: 0dai version, Node.js version, OS, steps to reproduce
+
+## Pull Requests
+
+- Fork the repo
+- Create a feature branch
+- Follow conventional commit messages
+- Submit a PR
+
+## Code of Conduct
+
+Be respectful. Be constructive. Help others.
+
+## License
+
+MIT

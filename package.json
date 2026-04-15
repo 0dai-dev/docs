@@ -1,6 +1,6 @@
 {
   "name": "@0dai-dev/cli",
-  "version": "3.10.1",
+  "version": "4.1.0",
   "description": "AI agents that know your project. One brain for Claude Code, Codex, Gemini CLI, Aider, and OpenCode.",
   "homepage": "https://0dai.dev",
   "repository": {
@@ -11,8 +11,17 @@
     "url": "https://github.com/0dai-dev/0dai/issues"
   },
   "keywords": [
-    "ai", "cli", "claude", "codex", "gemini", "aider", "opencode",
-    "ai-agents", "developer-tools", "mcp", "orchestration"
+    "ai",
+    "cli",
+    "claude",
+    "codex",
+    "gemini",
+    "aider",
+    "opencode",
+    "ai-agents",
+    "developer-tools",
+    "mcp",
+    "orchestration"
   ],
   "license": "MIT",
   "engines": {
