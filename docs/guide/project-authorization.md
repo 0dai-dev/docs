@@ -177,7 +177,7 @@ curl -X POST https://api.0dai.dev/v1/projects/heartbeat \
   -d '{
     "project_id": "proj_abc123",
     "event": "sync_complete",
-    "agents_used": ["claude", "codex"]
+    "agents_used": ["agent_cli_a", "agent_cli_b"]
   }'
 ```
 
