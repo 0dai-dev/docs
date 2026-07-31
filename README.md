@@ -7,45 +7,28 @@
   <a href="https://0dai.dev">Website</a> ·
   <a href="https://0dai.dev/pricing">Pricing</a> ·
   <a href="https://0dai.dev/docs">Docs</a> ·
-  <a href="https://github.com/0dai-dev/0dai/issues">Issues</a>
+  <a href="https://github.com/0dai-dev/docs/issues">Issues</a>
 </p>
 
 ---
 
-Your team uses Claude Code, Codex, Gemini, OpenCode, Aider, Qoder — each with its own config. 0dai generates all of them from a single `ai/` directory so your project knowledge stays in one place.
+## Public feedback
 
-## Quick Start
+Report bugs, friction, and feature requests in **this repository's issues**:
 
-```bash
-npm install -g @0dai-dev/cli
-cd your-project
-0dai init
-```
+**https://github.com/0dai-dev/docs/issues**
 
-That's it. 0dai detects your stack, creates `ai/`, and generates `CLAUDE.md`, `AGENTS.md`, `opencode.json`, and the rest.
+The 0dai product working monorepo is private. Do not expect to open issues on
+`0dai-dev/0dai` / `iGeezmo/0dai` as an external user.
 
-## What Happens
+### Security
 
-```
-your-project/
-├── ai/                    ← 0dai creates this
-│   ├── manifest/          ← project metadata, commands, discovery
-│   ├── personas/          ← agent role definitions
-│   ├── playbooks/         ← reusable workflows
-│   └── experience/        ← team knowledge (events → candidates → accepted)
-├── CLAUDE.md              ← generated for Claude Code
-├── AGENTS.md              ← generated for Codex
-├── opencode.json          ← generated for OpenCode
-├── .gemini/settings.json  ← generated for Gemini
-└── .qoder/settings.json   ← generated for Qoder
-```
+Security reports must **not** use public GitHub issues. Email **security@0dai.dev**
+only (see the product `SECURITY.md` in the working monorepo). The disclosure
+clock starts when mail reaches that address.
 
-Edit `ai/`, run `0dai sync`, all agent configs update. No manual copy-paste.
-
-## Commands
-
-| Command | What it does |
-|---------|-------------|
+---
+------|-------------|
 | `0dai init` | Install ai/ layer into any project |
 | `0dai sync` | Regenerate all agent configs from ai/ |
 | `0dai doctor` | Check health, credentials, agent versions |
